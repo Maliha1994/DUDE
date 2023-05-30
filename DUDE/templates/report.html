@@ -1,0 +1,756 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>FEAST - Report Generation</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+   <!-- Favicons -->
+  <link href="{% static 'img/favicon.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+ <link href="{% static 'css/fonts.css' %}" rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/venobox/venobox.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+</head>
+
+
+<style>
+    #intro{
+        height:528px !important;
+    }
+    #details {
+        background-color: transparent;
+        color: black;
+        font-weight: bold;
+    }
+</style>
+
+
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="container">
+
+      <div id="logo" class="pull-left">
+        <h1><a href="/feast" class="scrollto"><b>FEAST</b></a></h1>
+      </div>
+
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li class="menu-active"><a href="/feast"><b>Home</b></a></li>
+          <li><a href="#about"><b>About Us</b></a></li>
+          <li><a href="#features"><b>Features</b></a></li>
+          <li><a href="#team"><b>Team</b></a></li>
+          <li><a href="#contact"><b>Contact Us</b></a></li>
+        </ul>
+      </nav><!-- #nav-menu-container -->
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs Section ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2><b>Report Generation</b></h2>
+          <ol>
+            <li><a href="/feast">Home</a></li>
+            <li>Report Generation</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs Section -->
+
+  </main><!-- End #main -->
+
+{#    <div class="col-md-5 border" style="display:flex;" >#}
+{#  <canvas id="doughnutChart"></canvas>#}
+{#       </div>#}
+
+
+
+    <!-- ======= Intro Section ======= -->
+  <section id="intro">
+
+    <div class="intro-text">
+
+        <form action="{% url 'run_report' %}" method="post">
+            {% csrf_token %}
+             <button type="submit" class="btn-get-started scrollto" style="background-color:transparent; width: 300px "><b>Generate Report</b></button>
+        </form>
+
+        <a href="{% static 'temp_results/Report.pdf' %}"
+       download="Report.pdf" style="padding: 5px;">
+        <input type="submit" value="Download Report" class="btn-get-started scrollto" style="background-color:transparent; width: 300px; font-weight: bold; ">
+        </a>
+
+          <form action="{% url 'index' %}" method="post">
+            {% csrf_token %}
+             <button type="submit" class="btn-get-started scrollto" style="background-color:transparent; width: 300px" ><b>Go To Home</b></button>
+         </form>
+
+
+
+
+
+    </div>
+
+    <div class="product-screens">
+
+      <div class="product-screen-3 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.6s">
+        <img src="{% static 'img/' %}" alt="">
+      </div>
+	  
+	  <div class="product-screen-1 wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="0.6s">
+        <img src="{% static 'img/' %}" alt="">
+      </div>
+	  
+		<html lang = "en">
+		  <head>
+			<title>formDemo.html</title>
+			<meta charset = "UTF-8" />
+		  </head>
+		  <body>
+{#          <textarea id = "static-log" cols="120" rows="14"></textarea>#}
+		  </body>
+		</html>
+
+    </div>
+
+
+
+
+  </section><!-- End Intro Section -->
+
+  <br>
+  <br>
+  <section>
+      <div class="row">
+          <div class="col-md-4 text-center">
+               <p class="font-weight-bold ">Security Status of Firmware Under Test</p>
+          </div>
+
+           <div class="col-md-4 text-center">
+               <p class="font-weight-bold ">Static Analysis of Firmware Binary Under Test</p>
+               <form action="../static_analysis/" method="get">
+                <button type="submit" class="btn btn-outline-dark" id="details" style="background-color: #00FFFF;"><b>View Details of Static Analysis</b></button>
+               </form>
+          </div>
+
+          <div class="col-md-4 text-center">
+               <p class="font-weight-bold ">Code Analysis of Firmware Binary Under Test</p>
+               <form action="../ai/" method="get">
+                <button type="submit" class="btn btn-outline-dark" id="ai" style="background-color: #00FFFF;"><b>View Details of AI</b></button>
+               </form>
+          </div>
+
+      </div>
+
+      <hr>
+
+      <div class="row">
+          <div class="col-md-4 text-center">
+                <canvas id="doughnutChart"></canvas>
+          </div>
+
+           <div class="col-md-4 text-center">
+               <canvas id="staticChart"></canvas>
+          </div>
+
+          <div class="col-md-4 text-center">
+               <canvas id="codeChart"></canvas>
+          </div>
+      </div>
+  </section>
+
+{#  <section>#}
+{#      <div class="col-md-12 border" style="display:flex;" >#}
+{##}
+{#      <div class="col-md-6 text-right align-middle">#}
+{##}
+{#          <p class="font-weight-bold ">Security Status of Firmware Under Test</p>#}
+{#      </div>#}
+{##}
+{#          <div class="col-md-6">#}
+{#            <canvas id="doughnutChart"></canvas>#}
+{#      </div>#}
+{##}
+{#    </div>#}
+{##}
+{##}
+{##}
+{#    <div class="col-md-12 border" style="display:flex;" >#}
+{#      <div class="col-md-6 ">#}
+{#            <canvas id="staticChart"></canvas>#}
+{#      </div>#}
+{#      <div class="col-md-6">#}
+{##}
+{#          <p class="font-weight-bold">Static Analysis of Firmware Binary Under Test</p>#}
+{#      </div>#}
+{#    </div>#}
+{##}
+{##}
+{#    <div class="col-md-12 border" style="display:flex;" >#}
+{##}
+{#      <div class="col-md-6 text-right">#}
+{#          <p class="font-weight-bold">Code Analysis of Firmware Binary Under Test</p>#}
+{#      </div>#}
+{#           <div class="col-md-6">#}
+{#            <canvas id="codeChart"></canvas>#}
+{#      </div>#}
+{#    </div>#}
+{#  </section>#}
+
+
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 text-lg-left text-center">
+          <div class="copyright">
+            Powered by <strong><a target="_blank" href="https://ncsael.mcs.nust.edu.pk">NCSAEL</a></strong>
+          </div>
+          
+        </div>
+        <div class="col-lg-6">
+          <nav class="footer-links text-lg-right text-center pt-2 pt-lg-0">
+            <a href="/feast" class="scrollto">Home</a>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'vendor/wow/wow.min.js' %}"></script>
+  <script src="{% static 'vendor/venobox/venobox.min.js' %}"></script>
+  <script src="{% static 'vendor/superfish/superfish.min.js' %}"></script>
+  <script src="{% static 'vendor/hoverIntent/hoverIntent.js' %}"></script>
+  <script src="{% static 'js/mdb.min.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'js/main.js' %}"></script>
+
+
+<script>
+    //doughnut
+    const chatSocket = new WebSocket('ws://127.0.0.1:8000/ws/');
+    chatSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            var stri = data.message
+            var res = stri.split(":");
+            if (res[0]=='pie'){
+                var high_vul = res[1];
+                var med_vul = res[2];
+                var low_vul = res[3];
+                var cl_vul = res[4];
+
+                var ctxD = document.getElementById("doughnutChart").getContext('2d');
+                var myLineChart = new Chart(ctxD, {
+                type: 'doughnut',
+                data: {
+                labels: ["High Risk Vuln", "Medium Risk Vuln", "Low Risk Vuln", "Clean"],
+                datasets: [{
+                data: [high_vul, med_vul, low_vul, cl_vul],
+                backgroundColor: ["#f7464a", "#FE9A2E", "#FFFF00", "#01DF3A"],
+                hoverBackgroundColor: ["#FF0000", "#FF8000", "#D7DF01", "#31B404"]
+                }]
+                },
+                options: {
+                responsive: true
+                }
+                });
+            }
+
+            if (res[0]=='static') {
+
+                var lvl_pass = res[1];
+                var lvl_ssl = res[2];
+                var lvl_ssh = res[3];
+                var lvl_cfg = res[4];
+                var  lvl_db = res[5];
+                var  lvl_shel = res[6];
+                var  lvl_bfile = res[7];
+                var  lvl_b3rd = res[8];
+                var  lvl_webs = res[9];
+                var  lvl_ip = res[10];
+                var  lvl_url = res[11];
+                var  lvl_bkdr = res[12];
+                var  lvl_hpass = res[13];
+                var  lvl_email = res[14];
+                var  lvl_malptr = res[15];
+
+                var c_pass;
+                var c_pass_b;
+                if (lvl_pass == 10) {
+                    c_pass = 'rgba(51,153,0,0.2)';
+                    c_pass_b = 'rgba(51,153,0,1)';
+                }
+                else if (lvl_pass == 35){
+                    c_pass = 'rgba(255,255,0,0.2)';
+                    c_pass_b = 'rgba(255,255,0,1)';
+                    }
+                else if (lvl_pass == 60){
+                    c_pass = 'rgba(255,102,0,0.2)';
+                    c_pass_b = 'rgba(255,102,0,1)';
+                    }
+                else if (lvl_pass == 90){
+                    c_pass = 'rgba(255,0,0, 0.2)';
+                    c_pass_b = 'rgba(255,0,0, 1)';
+                    }
+
+                var c_ssl;
+                var c_ssl_b;
+                if (lvl_ssl ==5){
+                    c_ssl = 'rgba(51,153,0,0.2)';
+                    c_ssl_b = 'rgba(51,153,0,1)';
+                }
+                else if(lvl_ssl == 90){
+                    c_ssl = 'rgba(255,0,0, 0.2)';
+                    c_ssl_b = 'rgba(255,0,0, 1)';
+                }
+
+                var c_ssh;
+                var c_ssh_b;
+                if (lvl_ssh == 10) {
+                    c_ssh = 'rgba(51,153,0,0.2)';
+                    c_ssh_b = 'rgba(51,153,0,1)';
+                }
+                else if (lvl_ssh == 35){
+                    c_ssh = 'rgba(255,255,0,0.2)';
+                    c_ssh_b = 'rgba(255,255,0,1)';
+                    }
+                else if (lvl_ssh == 60){
+                    c_ssh = 'rgba(255,102,0,0.2)';
+                    c_ssh_b = 'rgba(255,102,0,1)';
+                    }
+                else if (lvl_ssh == 90){
+                    c_ssh = 'rgba(255,0,0, 0.2)';
+                    c_ssh_b = 'rgba(255,0,0, 1)';
+                    }
+
+                var c_cfg;
+                var c_cfg_b;
+                if (lvl_cfg == 10) {
+                    c_cfg = 'rgba(51,153,0,0.2)';
+                    c_cfg_b = 'rgba(51,153,0,1)';
+                }
+                else if (lvl_cfg == 35){
+                    c_cfg = 'rgba(255,255,0,0.2)';
+                    c_cfg_b = 'rgba(255,255,0,1)';
+                    }
+                else if (lvl_cfg == 60){
+                    c_cfg = 'rgba(255,102,0,0.2)';
+                    c_cfg_b = 'rgba(255,102,0,1)';
+                    }
+                else if (lvl_cfg == 90){
+                    c_cfg = 'rgba(255,0,0, 0.2)';
+                    c_cfg_b = 'rgba(255,0,0, 1)';
+                    }
+
+                var c_db;
+                var c_db_b;
+                if (lvl_db == 10) {
+                    c_db = 'rgba(51,153,0,0.2)';
+                    c_db_b = 'rgba(51,153,0,1)';
+                }
+                else if (lvl_db == 35){
+                    c_db = 'rgba(255,255,0,0.2)';
+                    c_db_b = 'rgba(255,255,0,1)';
+                    }
+                else if (lvl_db == 60){
+                    c_db = 'rgba(255,102,0,0.2)';
+                    c_db_b = 'rgba(255,102,0,1)';
+                    }
+                else if (lvl_db == 90){
+                    c_db = 'rgba(255,0,0, 0.2)';
+                    c_db_b = 'rgba(255,0,0, 1)';
+                    }
+
+                var c_shel;
+                var c_shel_b;
+                if (lvl_shel == 10) {
+                    c_shel = 'rgba(51,153,0,0.2)';
+                    c_shel_b = 'rgba(51,153,0,1)';
+                }
+                else if (lvl_shel == 35){
+                    c_shel = 'rgba(255,255,0,0.2)';
+                    c_shel_b = 'rgba(255,255,0,1)';
+                    }
+                else if (lvl_shel == 60){
+                    c_shel = 'rgba(255,102,0,0.2)';
+                    c_shel_b = 'rgba(255,102,0,1)';
+                    }
+                else if (lvl_shel == 90){
+                    c_shel = 'rgba(255,0,0, 0.2)';
+                    c_shel_b = 'rgba(255,0,0, 1)';
+                    }
+
+                var c_bfile;
+                var c_bfile_b;
+                if (lvl_bfile == 10) {
+                    c_bfile = 'rgba(51,153,0,0.2)';
+                    c_bfile_b = 'rgba(51,153,0,1)';
+                }
+                else if (lvl_bfile == 35){
+                    c_bfile = 'rgba(255,255,0,0.2)';
+                    c_bfile_b = 'rgba(255,255,0,1)';
+                    }
+                else if (lvl_bfile == 60){
+                    c_bfile = 'rgba(255,102,0,0.2)';
+                    c_bfile_b = 'rgba(255,102,0,1)';
+                    }
+                else if (lvl_bfile == 90){
+                    c_bfile = 'rgba(255,0,0, 0.2)';
+                    c_bfile_b = 'rgba(255,0,0, 1)';
+                    }
+
+                var c_3rd;
+                var c_3rd_b;
+                if (lvl_b3rd == 10) {
+                    c_3rd = 'rgba(51,153,0,0.2)';
+                    c_3rd_b = 'rgba(51,153,0,1)';
+                }
+                else if (lvl_b3rd == 35){
+                    c_3rd = 'rgba(255,255,0,0.2)';
+                    c_3rd_b = 'rgba(255,255,0,1)';
+                    }
+                else if (lvl_b3rd == 60){
+                    c_3rd = 'rgba(255,102,0,0.2)';
+                    c_3rd_b = 'rgba(255,102,0,1)';
+                    }
+                else if (lvl_b3rd == 90){
+                    c_3rd = 'rgba(255,0,0, 0.2)';
+                    c_3rd_b = 'rgba(255,0,0, 1)';
+                    }
+
+                var c_webs;
+                var c_webs_b;
+                if (lvl_webs == 10) {
+                    c_webs = 'rgba(51,153,0,0.2)';
+                    c_webs_b = 'rgba(51,153,0,1)';
+                }
+                else if (lvl_webs == 35){
+                    c_webs = 'rgba(255,255,0,0.2)';
+                    c_webs_b = 'rgba(255,255,0,1)';
+                    }
+                else if (lvl_webs == 60){
+                    c_webs = 'rgba(255,102,0,0.2)';
+                    c_webs_b = 'rgba(255,102,0,1)';
+                    }
+                else if (lvl_webs == 90){
+                    c_webs = 'rgba(255,0,0, 0.2)';
+                    c_webs_b = 'rgba(255,0,0, 1)';
+                    }
+
+                var c_ip;
+                var c_ip_b;
+                if (lvl_ip ==5){
+                    c_ip = 'rgba(51,153,0,0.2)';
+                    c_ip_b = 'rgba(51,153,0,1)';
+                }
+                else if(lvl_ip == 90){
+                    c_ip = 'rgba(255,0,0, 0.2)';
+                    c_ip_b = 'rgba(255,0,0, 1)';
+                }
+
+
+                var c_url;
+                var c_url_b;
+                if (lvl_url == 10) {
+                    c_url = 'rgba(51,153,0,0.2)';
+                    c_url_b = 'rgba(51,153,0,1)';
+                }
+                else if (lvl_url == 35){
+                    c_url = 'rgba(255,255,0,0.2)';
+                    c_url_b = 'rgba(255,255,0,1)';
+                    }
+                else if (lvl_url == 60){
+                    c_url = 'rgba(255,102,0,0.2)';
+                    c_url_b = 'rgba(255,102,0,1)';
+                    }
+                else if (lvl_url == 90){
+                    c_url = 'rgba(255,0,0, 0.2)';
+                    c_url_b = 'rgba(255,0,0, 1)';
+                    }
+
+                var c_bkdr;
+                var c_bkdr_b;
+                if (lvl_bkdr ==5){
+                    c_bkdr = 'rgba(51,153,0,0.2)';
+                    c_bkdr_b = 'rgba(51,153,0,1)';
+                }
+                else if(lvl_bkdr == 90){
+                    c_bkdr = 'rgba(255,0,0, 0.2)';
+                    c_bkdr_b = 'rgba(255,0,0, 1)';
+                }
+
+                var c_hpass;
+                var c_hpass_b;
+                if (lvl_hpass ==5){
+                    c_hpass = 'rgba(51,153,0,0.2)';
+                    c_hpass_b = 'rgba(51,153,0,1)';
+                }
+                else if(lvl_hpass == 90){
+                    c_hpass = 'rgba(255,0,0, 0.2)';
+                    c_hpass_b = 'rgba(255,0,0, 1)';
+                }
+
+
+                var c_email;
+                var c_email_b;
+                if (lvl_email == 10) {
+                    c_email = 'rgba(51,153,0,0.2)';
+                    c_email_b = 'rgba(51,153,0,1)';
+                }
+                else if (lvl_email == 35){
+                    c_email = 'rgba(255,255,0,0.2)';
+                    c_email_b = 'rgba(255,255,0,1)';
+                    }
+                else if (lvl_email == 60){
+                    c_email = 'rgba(255,102,0,0.2)';
+                    c_email_b = 'rgba(255,102,0,1)';
+                    }
+                else if (lvl_email == 90){
+                    c_email = 'rgba(255,0,0, 0.2)';
+                    c_email_b = 'rgba(255,0,0, 1)';
+                    }
+
+                var c_malptr;
+                var c_malptr_b;
+                if (lvl_malptr == 10) {
+                    c_malptr = 'rgba(51,153,0,0.2)';
+                    c_malptr_b = 'rgba(51,153,0,1)';
+                }
+                else if (lvl_malptr == 35){
+                    c_malptr = 'rgba(255,255,0,0.2)';
+                    c_malptr_b = 'rgba(255,255,0,1)';
+                    }
+                else if (lvl_malptr == 60){
+                    c_malptr = 'rgba(255,102,0,0.2)';
+                    c_malptr_b = 'rgba(255,102,0,1)';
+                    }
+                else if (lvl_malptr == 90){
+                    c_malptr = 'rgba(255,0,0, 0.2)';
+                    c_malptr_b = 'rgba(255,0,0, 1)';
+                    }
+
+
+                var ctx = document.getElementById("staticChart").getContext('2d');
+                var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                labels: ['Admin passwords', 'SSl Cert', 'SSH', 'Config files', 'DB files', 'Shell scripts', 'Misc',
+                    '3rd Party', 'Web servers', 'IP addresses', 'Urls', 'backdoor', 'Hardcoded passwords', 'Emails',
+                    'Malicious patterns'],
+                datasets: [{
+                label: '',
+                data: [lvl_pass, lvl_ssl, lvl_ssh, lvl_cfg, lvl_db, lvl_shel, lvl_bfile, lvl_b3rd, lvl_webs, lvl_ip,
+                lvl_url, lvl_bkdr, lvl_hpass, lvl_email, lvl_malptr],
+                backgroundColor: [
+                c_pass,
+                c_ssl,
+                c_ssh,
+                c_cfg,
+                c_db,
+                c_shel,
+                c_bfile,
+                c_3rd,
+                c_webs,
+                c_ip,
+                c_url,
+                c_bkdr,
+                c_hpass,
+                c_email,
+                c_malptr
+                ],
+                borderColor: [
+                c_pass_b,
+                c_ssl_b,
+                c_ssh_b,
+                c_cfg_b,
+                c_db_b,
+                c_shel_b,
+                c_bfile_b,
+                c_3rd_b,
+                c_webs_b,
+                c_ip_b,
+                c_url_b,
+                c_bkdr_b,
+                c_hpass_b,
+                c_email_b,
+                c_malptr_b
+                ],
+                borderWidth: 1
+                }]
+                },
+                options: {
+                scales: {
+                yAxes: [{
+                ticks: {
+                beginAtZero: true
+                }
+                }]
+                },
+                legend: { display: false }
+                }
+                });
+
+            }
+
+            if (res[0]=='code'){
+                var lvl_obs = res[1];
+                var lvl_mal = res[2];
+                var lvl_arg = res[3];
+                var lvl_buf = res[4];
+
+                var c_obs;
+                var c_obs_b;
+                if (lvl_obs == 10) {
+                    c_obs = 'rgba(51,153,0,0.2)';
+                    c_obs_b = 'rgba(51,153,0,1)';
+                }
+                else if (lvl_obs == 35){
+                    c_obs = 'rgba(255,255,0,0.2)';
+                    c_obs_b = 'rgba(255,255,0,1)';
+                    }
+                else if (lvl_obs == 60){
+                    c_obs = 'rgba(255,102,0,0.2)';
+                    c_obs_b = 'rgba(255,102,0,1)';
+                    }
+                else if (lvl_obs == 90){
+                    c_obs = 'rgba(255,0,0, 0.2)';
+                    c_obs_b = 'rgba(255,0,0, 1)';
+                    }
+
+                var c_mal;
+                var c_mal_b;
+                if (lvl_mal == 10) {
+                    c_mal = 'rgba(51,153,0,0.2)';
+                    c_mal_b = 'rgba(51,153,0,1)';
+                }
+                else if (lvl_mal == 35){
+                    c_mal = 'rgba(255,255,0,0.2)';
+                    c_mal_b = 'rgba(255,255,0,1)';
+                    }
+                else if (lvl_mal == 60){
+                    c_mal = 'rgba(255,102,0,0.2)';
+                    c_mal_b = 'rgba(255,102,0,1)';
+                    }
+                else if (lvl_mal == 90){
+                    c_mal = 'rgba(255,0,0, 0.2)';
+                    c_mal_b = 'rgba(255,0,0, 1)';
+                    }
+
+                var c_arg;
+                var c_arg_b;
+                if (lvl_arg == 10) {
+                    c_arg = 'rgba(51,153,0,0.2)';
+                    c_arg_b = 'rgba(51,153,0,1)';
+                }
+                else if (lvl_arg == 35){
+                    c_arg = 'rgba(255,255,0,0.2)';
+                    c_arg_b = 'rgba(255,255,0,1)';
+                    }
+                else if (lvl_arg == 60){
+                    c_arg = 'rgba(255,102,0,0.2)';
+                    c_arg_b = 'rgba(255,102,0,1)';
+                    }
+                else if (lvl_arg == 90){
+                    c_arg = 'rgba(255,0,0, 0.2)';
+                    c_arg_b = 'rgba(255,0,0, 1)';
+                    }
+
+                var c_buf;
+                var c_buf_b;
+                if (lvl_buf == 10) {
+                    c_buf = 'rgba(51,153,0,0.2)';
+                    c_buf_b = 'rgba(51,153,0,1)';
+                }
+                else if (lvl_buf == 35){
+                    c_buf = 'rgba(255,255,0,0.2)';
+                    c_buf_b = 'rgba(255,255,0,1)';
+                    }
+                else if (lvl_buf == 60){
+                    c_buf = 'rgba(255,102,0,0.2)';
+                    c_buf_b = 'rgba(255,102,0,1)';
+                    }
+                else if (lvl_buf == 90){
+                    c_buf = 'rgba(255,0,0, 0.2)';
+                    c_buf_b = 'rgba(255,0,0, 1)';
+                    }
+
+
+                var ctx = document.getElementById("codeChart").getContext('2d');
+                var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                labels: ['Obsolete Functions', 'Malicious Code Stacks', 'Bad Arguments', 'Static Memory Allocations'],
+                datasets: [{
+                label: '',
+                data: [lvl_obs, lvl_mal, lvl_arg, lvl_buf],
+                backgroundColor: [
+                c_obs,
+                c_mal,
+                c_arg,
+                c_buf
+                ],
+                borderColor: [
+                c_obs_b,
+                c_mal_b,
+                c_arg_b,
+                c_buf_b
+                ],
+                borderWidth: 1
+                }]
+                },
+                options: {
+                scales: {
+                yAxes: [{
+                ticks: {
+                beginAtZero: true
+                }
+                }]
+                },
+                legend: { display: false }
+                }
+                });
+
+            }
+
+        };
+
+</script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+{% extends 'accounts/base.html' %}
+{% block content %}
+<h1>PROFILE</h1>
+<h5 class="">Author Name : {{ username }}</h5>
+{% for group in groups %}
+<p>Group : {{group.name}}</p>
+{% endfor %}
+<h1> MY DASHBOARD </h1>
+
+
+
+<h4 class="display-5 text-center alert alert-primary"> Show The Information </h4>
+
+{% endblock %}

@@ -1,0 +1,63 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Sign Up</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--===============================================================================================-->
+	<link  type="text/css" href="../../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../../static/main.css">
+	<link rel="stylesheet" type="text/css" href="../../static/util.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	<div class="container-login100 bg" >
+		<div style="opacity: 0.9" class="wrap-login100 p-l-40 p-r-40 p-t-80 p-b-30">
+
+				<span class="login100-form-title p-b-37">
+					F E A S T
+				</span>
+
+<!--===============================================================================================-->
+
+
+{% load crispy_forms_tags %}
+
+    <form method="POST" action="" novalidate>
+        {% csrf_token %}
+        <div class="form-group container-login100-form-btn m-t-10">
+
+            {% for field in form %}
+                {{ field|as_crispy_field }}
+            {% endfor %}
+
+        <div class="container-login100-form-btn m-t-10">
+					<button type="submit" class="login100-form-btn">
+						Sign Up
+					</button>
+				</div>
+        </div>
+
+
+
+
+
+
+<!--===============================================================================================-->
+
+				<div class="container-login100-form-btn p-t-10">
+					<span class="login100-form-normal"> Already Have an Account?  <a href="{% url 'login' %}">   Sign In</a></span>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div id="dropDownSelect1"></div>
+
+</body>
+</html>

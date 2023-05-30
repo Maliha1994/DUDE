@@ -1,0 +1,242 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>FEAST - Upload</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+    <!-- Favicons -->
+  <link href="{% static 'img/favicon.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+  <link href="{% static 'css/fonts.css' %}" rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/venobox/venobox.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <style>
+        #intro{
+               height: 800px !important;
+                padding: 0px auto;
+                text-align: center;
+                padding-top: 21px;
+        }
+        input[type="file"] {
+            display: inline-block;
+            margin-left: 98px;
+            font-weight: 400;
+            color: #212529;
+            text-align: center;
+            vertical-align: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background-color: transparent;
+            border: 1px solid transparent;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: .25rem;
+            transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+        .element:not(:last-child) {
+            margin-bottom: 18rem;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        *{
+          margin:0;
+          padding:0;
+          box-sizing: border-box;
+        }
+        .container{
+          max-width: 1170px;
+          margin:auto;
+        }
+        .row{
+          display: flex;
+          flex-wrap: wrap;
+        }
+        ul{
+          list-style: none;
+        }
+        .footer{
+          background-color: #24262b;
+            padding: 70px 0;
+        }
+        .footer-col{
+           width: 25%;
+           padding: 0 15px;
+        }
+        .footer-col h4{
+          font-size: 18px;
+          color: #ffffff;
+          text-transform: capitalize;
+          margin-bottom: 35px;
+          font-weight: 500;
+          position: relative;
+        }
+        .footer-col h4::before{
+          content: '';
+          position: absolute;
+          left:0;
+          bottom: -10px;
+          background-color: #e91e63;
+          height: 2px;
+          box-sizing: border-box;
+          width: 50px;
+        }
+        .footer-col ul li:not(:last-child){
+          margin-bottom: 10px;
+        }
+        .footer-col ul li a{
+          font-size: 16px;
+          text-transform: capitalize;
+          color: #ffffff;
+          text-decoration: none;
+          font-weight: 300;
+          color: #bbbbbb;
+          display: block;
+          transition: all 0.3s ease;
+        }
+        .footer-col ul li a:hover{
+          color: #ffffff;
+          padding-left: 8px;
+        }
+        .footer-col .social-links a{
+          display: inline-block;
+          height: 40px;
+          width: 40px;
+          background-color: rgba(255,255,255,0.2);
+          margin:0 10px 10px 0;
+          text-align: center;
+          line-height: 40px;
+          border-radius: 50%;
+          color: #ffffff;
+          transition: all 0.5s ease;
+        }
+        .footer-col .social-links a:hover{
+          color: #24262b;
+          background-color: #ffffff;
+        }
+
+        /*responsive*/
+        @media(max-width: 767px){
+          .footer-col{
+            width: 50%;
+            margin-bottom: 30px;
+        }
+        }
+        @media(max-width: 574px){
+          .footer-col{
+            width: 100%;
+        }
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="container">
+
+      <div id="logo" class="pull-left">
+        <h1><a href="/feast" class="scrollto"><b>FEAST</b></a></h1>
+      </div>
+
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li class="menu-active"><a href="/feast"><b>Home</b></a></li>
+          <li><a href="../feast/#about"><b>About Us</b></a></li>
+          <li><a href="../feast/#features"><b>Features</b></a></li>
+          <li><a href="../feast/#team"><b>Team</b></a></li>
+          <li><a href="../feast/#contact"><b>Contact Us</b></a></li>
+        </ul>
+      </nav><!-- #nav-menu-container -->
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs Section ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2><b>Firmware Uploading</b></h2>
+          <ol>
+            <li><a href="/feast">Home</a></li>
+            <li>Firmware Uploading</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs Section -->
+
+  </main><!-- End #main -->
+  
+    <!-- ======= Intro Section ======= -->
+  <section id="intro">
+    <div class="element"></div>
+    <div >
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn-get-started scrollto" style="background-color:#20B2AA; width: 300px "><b>Firmware Upload</b></button>
+        </form>
+
+    </div>
+
+  </section><!-- End Intro Section -->
+
+    <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 text-lg-left text-center">
+          <div class="copyright">
+            Powered by <strong><a target="_blank" href="https://ncsael.mcs.nust.edu.pk">NCSAEL</a></strong>
+          </div>
+
+        </div>
+        <div class="col-lg-6">
+          <nav class="footer-links text-lg-right text-center pt-2 pt-lg-0">
+            <a href="/feast" class="scrollto">Home</a>
+
+          </nav>
+        </div>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'vendor/wow/wow.min.js' %}"></script>
+  <script src="{% static 'vendor/venobox/venobox.min.js' %}"></script>
+  <script src="{% static 'vendor/superfish/superfish.min.js' %}"></script>
+  <script src="{% static 'vendor/hoverIntent/hoverIntent.js' %}"></script>
+  <!-- Template Main JS File -->
+  <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,506 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>FEAST - Home</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'img/favicon.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="{% static 'css/fonts.css' %}" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/venobox/venobox.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+</head>
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header-transparent">
+    <div class="container">
+
+      <div id="logo" class="pull-left">
+        <h1><a href="/feast" class="scrollto"><b>FEAST</b></a></h1>
+      </div>
+
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+
+          <li><a href="#intro"><b>Home</b></a></li>
+          <li><a href="#about"><b>About Us</b></a></li>
+          <li><a href="#features"><b>Features</b></a></li>
+          <li><a href="#team"><b>Team</b></a></li>
+          <li><a href="#contact"><b>Contact Us</b></a></li>
+            <li>
+                <a href={% url 'logout-page' %}>
+
+                    <b>Logout -  {{ request.user.username }}</b>
+                </a>
+            </li>
+        </ul>
+      </nav><!-- #nav-menu-container -->
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Intro Section ======= -->
+  <section id="intro">
+
+    <div class="intro-text">
+      <h2>FEAST: Firmware Extraction Analysis & Security Assessment Toolkit</h2>
+      <p>Automated Security Scanning of Industrial IoTs</p>
+        <form action="{% url 'nav_upload' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn-get-started scrollto" style="background-color:transparent; width: 300px "><b>Get Started</b></button>
+        </form>
+        <form action="{% url 'ai' %}" method="post">
+            {% csrf_token %}
+             <button type="submit" class="btn-get-started scrollto" style="background-color:transparent; width: 300px "><b>AI Scan</b></button>
+         </form>
+    </div>
+
+    <div class="product-screens">
+
+      <div class="product-screen-3 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.6s">
+        <img src="{% static 'img/5.jpg' %}" alt="">
+      </div>
+	  
+	  <div class="product-screen-1 wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="0.6s">
+        <img src="{% static 'img/index.html6.png' %}" alt="">
+      </div>
+    </div>
+
+  </section><!-- End Intro Section -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="section-bg">
+      <div class="container-fluid">
+        <div class="section-header">
+          <h3 class="section-title">About Us</h3>
+          <span class="section-divider"></span>
+          <p class="section-description">
+            NCSAEL's prime emphasis is to Design and Develop Indigenous Tools to carry out<br>
+            Security Assessment and Auditing of foreign and local IT products/ services
+          </p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 about-img wow fadeInLeft">
+            <img src="{% static 'img/about-img.jpg' %}" alt="">
+          </div>
+
+          <div class="col-lg-6 content wow fadeInRight">
+            <h2>Higher Education Comission (HEC) and Planning Commission of Pakistan's sponsored, National Cyber Security Auditing and Evaluation Lab is an internationally recognized Cyber-Security Research Lab established at NUST</h2>
+            <h3></h3>
+            <p>
+              
+            </p>
+
+            <ul>
+              <li><i class="ion-android-checkmark-circle"></i> Security Assessment and Auditing of foreign and local IT security products/ services</li>
+              <li><i class="ion-android-checkmark-circle"></i> Indigenous Development of specialized tools/ software for carrying out security screening and malware analysis</li>
+              <li><i class="ion-android-checkmark-circle"></i> Capacity Building for Common Criteria Testing Lab (CCTL) through Assessment of security targets</li>
+            </ul>
+
+            <p>
+              
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Featuress Section ======= -->
+    <section id="features">
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-lg-8 offset-lg-4">
+            <div class="section-header wow fadeIn" data-wow-duration="1s">
+              <h3 class="section-title">Product Features</h3>
+              <span class="section-divider"></span>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-5 features-img">
+            <img src="{% static 'img/product-features.png' %}" alt="" class="wow fadeInLeft">
+          </div>
+
+          <div class="col-lg-8 col-md-7 ">
+
+            <div class="row">
+
+              <div class="col-lg-6 col-md-6 box wow fadeInRight">
+                <div class="icon"><i class="ion-ios-cog-outline"></i></div>
+                <h4 class="title"><a href="">Firmware Unpacking</a></h4>
+                <p class="description">Performs the unpacking of newly designed and unique filesystem formats</p>
+              </div>
+              <div class="col-lg-6 col-md-6 box wow fadeInRight" data-wow-delay="0.1s">
+                <div class="icon"><i class="ion-ios-folder-outline"></i></div>
+                <h4 class="title"><a href="">Diverse Filesystem Support</a></h4>
+                <p class="description">Support binaries having 49 diverse filesystem</p>
+              </div>
+              <div class="col-lg-6 col-md-6 box wow fadeInRight" data-wow-delay="0.2s">
+                <div class="icon"><i class="ion-social-buffer-outline"></i></div>
+                <h4 class="title"><a href="">Security Assessment</a></h4>
+                <p class="description"> In-depth security analysis of executable binaries to detect vulnerabilities, hardcoded IPs, SSL certificates, malicious files, hidden backdoors, and so on</p>
+              </div>
+			  <div class="col-lg-6 col-md-6 box wow fadeInRight" data-wow-delay="0.3s">
+                <div class="icon"><i class="ion-ios-color-filter-outline"></i></div>
+                <h4 class="title"><a href="">Cross Vendor Support</a></h4>
+                <p class="description">Support variety of devices i.e. routers, switches, smart watches, IP cameras from different vendors</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- End Featuress Section -->
+
+    <!-- ======= Advanced Featuress Section ======= -->
+    <section id="advanced-features">
+
+      <div class="features-row section-bg">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <img class="advanced-feature-img-right wow fadeInRight" src="{% static 'img/chip1.jpg' %}" alt="">
+              <div class="wow fadeInLeft">
+
+
+                <h2>Acquisition of Firmware Binary from Embedded Devices Firmware</h2>
+                <h3>FEAST makes use of flashrom, a linux utility, to acquire firmware binary using CH341A and SOIC8 flash chip IC test clip adapter</h3>
+                <p>JTAG is also used over a hardware tool called Bus Blaster to connect to the JTAG interface of the embedded device target board. It then communicates with CPU and CPU in return communicates with the flash memory. In this way, contents of flash are dumped</p>
+                <p>Obtain the firmware binary from vendor websites</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+	  
+	  <div class="features-row section-bg">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <img class="advanced-feature-img-right wow fadeInRight" src="{% static 'img/advanced-feature-3.jpg' %}" width="555px" height="370px" alt="">
+              <div class="wow fadeInLeft">
+                <h2>Security Status of Firmware Under Test</h2>
+                <h3>Once the filesystem unpacking and security assessment has been completed, FEAST generates a detailed report regarding vulnerabilities present in the embedded firmware devices and their associated impact level</h3>
+                <p>Summary of findings provides the security status, generates the risk analysis results, type of vulnerabilities with their associated impact levels, and ways to patch the discovered vulnerabilities</p>
+                <i class="ion-ios-list-outline"></i>
+                <p> Generated report covers all major findings of security assessment including, malicious code stacks, buffer overflow bugs, obsolete functions, bad argument bugs, disclosed passwords, possible hidden backdoors, and sensitive information. Furthermore, hardcoded IP address and URLs, which may be used for remote execution of malicious scripts and monitoring are present</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+	 </section>
+
+    <!-- ======= Call To Action Section ======= -->
+    <section id="call-to-action">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-9 text-center text-lg-left">
+            <h3 class="cta-title">FEAST- in Action</h3>
+            <p class="cta-text"> An Indigenous and Unified Solution esp for the Sensitive Organizations</p>
+          </div>
+          
+        </div>
+
+      </div>
+    </section><!-- End Call To Action Section -->
+
+    <!-- ======= More Features Section ======= -->
+    <section id="more-features" class="section-bg">
+      <div class="container">
+
+        <div class="section-header">
+          <h3 class="section-title">More Features</h3>
+          <span class="section-divider"></span>
+          <p class="section-description">FEAST offers the following novel features for the vulnerability analysis of firmware undertest</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-6">
+            <div class="box wow fadeInLeft">
+              <div class="icon"><i class="ion-ios-barcode-outline"></i></div>
+              <h4 class="title"><a href="">Encrypted Firmware Support</a></h4>
+              <p class="description"> Successful decryption of the encrypted firmware binaries</p>
+              <br>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="box wow fadeInRight">
+              <div class="icon"><i class="ion-ios-bookmarks-outline"></i></div>
+              <h4 class="title"><a href="">Deobfuscation of Obfuscated Binaries</a></h4>
+              <p class="description">Deobfuscation of obfuscated detected magic bytes using magic bytes iterative database and superblock database</p>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="box wow fadeInLeft">
+              <div class="icon"><i class="ion-ios-calendar-outline"></i></div>
+              <h4 class="title"><a href="">Endian Conversion of Compressed Romfs</a></h4>
+              <p class="description"> Big endian conversion of compressed romfs to little endian format</p>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="box wow fadeInRight">
+              <div class="icon"><i class="ion-ios-time-outline"></i></div>
+              <h4 class="title"><a href="">Time and Resource Efficient</a></h4>
+              <p class="description"> Efficient binary extraction and analysis. Less computational complexity</p>
+              <br>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section><!-- End More Features Section -->
+
+    <!-- ======= Frequently Asked Questions Section ======= -->
+    <section id="faq">
+      <div class="container">
+
+        <div class="section-header">
+          <h3 class="section-title">Frequently Asked Questions</h3>
+          <span class="section-divider"></span>
+          <p class="section-description"></p>
+        </div>
+
+        <ul id="faq-list" class="wow fadeInUp">
+          <li>
+            <a data-toggle="collapse" class="collapsed" href="#faq1">Does the reverse engineering of encrypted firmware binaries is possible?  <i class="ion-android-remove"></i></a>
+            <div id="faq1" class="collapse" data-parent="#faq-list">
+              <p>
+                FEAST provides the novel functionality of decryption and unpacking of encrypted firmware binaries
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <a data-toggle="collapse" href="#faq2" class="collapsed">How the unique firmware binaries can be unpacked and assessed for the vulnerability analysis? <i class="ion-android-remove"></i></a>
+            <div id="faq2" class="collapse" data-parent="#faq-list">
+              <p>
+                FEAST has implemented a Custom Extractor that performs the unpacking and security assessment of unique filesystem format, which is not supported by the existing tools
+              </p>
+            </div>
+          </li>
+
+
+          <li>
+            <a data-toggle="collapse" href="#faq4" class="collapsed">How can diverse vendor specfic formats can be analyzed for security assessment capabilities? <i class="ion-android-remove"></i></a>
+            <div id="faq4" class="collapse" data-parent="#faq-list">
+              <p>
+                FEAST provides the unified solution for the diverse vendor specific filesystem formats including the support for the unique and unknown filesystem
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <a data-toggle="collapse" href="#faq5" class="collapsed">How FEAST supports the in-depth analysis of executable binaries? <i class="ion-android-remove"></i></a>
+            <div id="faq5" class="collapse" data-parent="#faq-list">
+              <p>
+                It performs the Code Analysis for the in-depth scanning of vulnerabilities
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <a data-toggle="collapse" href="#faq6" class="collapsed">What are the findings of security analysis? <i class="ion-android-remove"></i></a>
+            <div id="faq6" class="collapse" data-parent="#faq-list">
+              <p>
+                 Summary of findings include hardcoded IP addresses, hardcoded passwords, SSL certificates, configuration files, vulnerable code stacks, buffer overflow bugs, bad arguments parsing, and .
+              </p>
+            </div>
+          </li>
+
+        </ul>
+
+      </div>
+    </section><!-- End Frequently Asked Questions Section -->
+
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="section-bg">
+      <div class="container">
+        <div class="section-header">
+          <h3 class="section-title">Our Team</h3>
+          <span class="section-divider"></span>
+          <p class="section-description">Team for the Development of Indigenous Firmware Security Assessment Toolkit</p>
+        </div>
+        <div class="row wow fadeInUp">
+          <div class="col-lg-3 col-md-6">
+            <div class="member">
+              <div class="pic"><img src="{% static 'img/team/haider.png' %}" alt=""></div>
+              <h4>Haider Abbas</h4>
+              <span>Director</span>
+
+              
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="member">
+              <div class="pic"><img src="{% static 'img/team/ashraf.jpg' %}" alt=""></div>
+              <h4>Ashraf Masood</h4>
+              <span>Product Manager</span>
+
+            </div>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6">
+            <div class="member">
+              <div class="pic"><img src="{% static 'img/team/maliha.jpg' %}" alt=""></div>
+              <h4>Maliha Safdar</h4>
+              <span>Team Lead</span>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="member">
+              <div class="pic"><img src="{% static 'img/team/shahzad.jpg' %}" alt=""></div>
+              <h4>Muhammad Shahzad</h4>
+              <span>Ex-Research Associate</span>
+
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+    </section><!-- End Team Section -->
+
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact">
+      <div class="container">
+        <div class="row wow fadeInUp">
+
+          <div class="col-lg-4 col-md-4">
+            <div class="contact-about">
+              <h3>FEAST</h3>
+              <p>To overcome the loopholes of existing tools, FEAST introduces an automated novel framework to improve the security assessment and vulnerability analysis of Industry 4.0 devices</p>
+              
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4">
+            <div class="info">
+              <div>
+                <i class="ion-ios-location-outline"></i>
+                <p>NCSAEL, Military College of Signals, Campus of NUST, Humayun Road, Rawalpindi<br>Pakistan</p>
+              </div>
+
+              <div>
+                <i class="ion-ios-email-outline"></i>
+                <p>csael-nust@mcs.edu.pk</p>
+              </div>
+
+              
+
+            </div>
+          </div>
+
+          <div class="col-lg-5 col-md-8">
+            <div class="form">
+              <form action="/sendmail/" method="post" role="form" class="php-email-form">
+                  {% csrf_token %}
+                <div class="form-row">
+                  <div class="form-group col-lg-6">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                    <div class="validate"></div>
+                  </div>
+                  <div class="form-group col-lg-6">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
+                    <div class="validate"></div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
+                  <div class="validate"></div>
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                  <div class="validate"></div>
+                </div>
+                <div class="mb-3">
+                  <div class="loading">Loading</div>
+                  <div class="error-message">Message not delivered.</div>
+                  <div class="sent-message">Your message has been sent. Thank you!</div>
+                </div>
+                <div class="text-center"><button type="submit" title="Send Message">Send Message</button></div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 text-lg-left text-center">
+          <div class="copyright">
+            <strong></strong>Powered by NCSAEL
+          </div>
+          
+        </div>
+        <div class="col-lg-6">
+          <nav class="footer-links text-lg-right text-center pt-2 pt-lg-0">
+            <a href="#intro" class="scrollto">Home</a>
+            <a href="#about" class="scrollto">About</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'vendor/wow/wow.min.js' %}"></script>
+  <script src="{% static 'vendor/venobox/venobox.min.js' %}"></script>
+  <script src="{% static 'vendor/superfish/superfish.min.js' %}"></script>
+  <script src="{% static 'vendor/hoverIntent/hoverIntent.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'js/main.js' %}"></script>
+
+
+</body>
+
+</html>

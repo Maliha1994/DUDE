@@ -1,0 +1,374 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>FEAST - AI</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+    <!-- Favicons -->
+  <link href="{% static 'img/favicon.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+  <link href="{% static 'css/fonts.css' %}" rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/venobox/venobox.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <style>
+        #intro{
+               height: 200px !important;
+                padding: 0px auto;
+                text-align: center;
+                padding-top: 21px;
+        }
+        #intro-bg{
+                background: linear-gradient(45deg, rgba(29, 224, 153, 0.8), rgba(29, 200, 205, 0.8)), url("../img/intro-bg.jpg") center top no-repeat;
+        }
+        input[type="file"] {
+            display: inline-block;
+            margin-left: 98px;
+            font-weight: 400;
+            color: #212529;
+            text-align: center;
+            vertical-align: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background-color: transparent;
+            border: 1px solid transparent;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: .25rem;
+            transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+        .element:not(:last-child) {
+            margin-bottom: 18rem;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        *{
+          margin:0;
+          padding:0;
+          box-sizing: border-box;
+        }
+        .container{
+          max-width: 1170px;
+          margin:auto;
+        }
+        .row{
+          display: flex;
+          flex-wrap: wrap;
+        }
+        ul{
+          list-style: none;
+        }
+        .footer{
+          background-color: #24262b;
+            padding: 70px 0;
+        }
+        .footer-col{
+           width: 25%;
+           padding: 0 15px;
+        }
+        .footer-col h4{
+          font-size: 18px;
+          color: #ffffff;
+          text-transform: capitalize;
+          margin-bottom: 35px;
+          font-weight: 500;
+          position: relative;
+        }
+        .footer-col h4::before{
+          content: '';
+          position: absolute;
+          left:0;
+          bottom: -10px;
+          background-color: #e91e63;
+          height: 2px;
+          box-sizing: border-box;
+          width: 50px;
+        }
+        .footer-col ul li:not(:last-child){
+          margin-bottom: 10px;
+        }
+        .footer-col ul li a{
+          font-size: 16px;
+          text-transform: capitalize;
+          color: #ffffff;
+          text-decoration: none;
+          font-weight: 300;
+          color: #bbbbbb;
+          display: block;
+          transition: all 0.3s ease;
+        }
+        .footer-col ul li a:hover{
+          color: #ffffff;
+          padding-left: 8px;
+        }
+        .footer-col .social-links a{
+          display: inline-block;
+          height: 40px;
+          width: 40px;
+          background-color: rgba(255,255,255,0.2);
+          margin:0 10px 10px 0;
+          text-align: center;
+          line-height: 40px;
+          border-radius: 50%;
+          color: #ffffff;
+          transition: all 0.5s ease;
+        }
+        .footer-col .social-links a:hover{
+          color: #24262b;
+          background-color: #ffffff;
+        }
+
+        /*responsive*/
+        @media(max-width: 767px){
+          .footer-col{
+            width: 50%;
+            margin-bottom: 30px;
+        }
+        }
+        @media(max-width: 574px){
+          .footer-col{
+            width: 100%;
+        }
+        }
+
+
+        .circle-wrap {
+          margin: 50px auto;
+          width: 150px;
+          height: 150px;
+          background: #e6e2e7;
+          border-radius: 50%;
+        }
+        .circle-wrap .circle .mask,
+        .circle-wrap .circle .fill {
+          width: 150px;
+          height: 150px;
+          position: absolute;
+          border-radius: 50%;
+        }
+        .circle-wrap .circle .mask {
+  clip: rect(0px, 150px, 150px, 75px);
+}
+        .circle-wrap .circle .mask .fill {
+          clip: rect(0px, 75px, 150px, 0px);
+          background-color: #9e00b1;
+        }
+        .circle-wrap .circle .mask.full,
+        .circle-wrap .circle .fill {
+          animation: fill ease-in-out 3s;
+          transform: rotate(126deg);
+        }
+
+        @keyframes fill {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(126deg);
+          }
+        }
+       .circle-wrap .inside-circle {
+          width: 130px;
+          height: 130px;
+          border-radius: 50%;
+          background: #fff;
+          line-height: 130px;
+          text-align: center;
+          margin-top: 10px;
+          margin-left: 10px;
+          position: absolute;
+          z-index: 100;
+          font-weight: 700;
+          font-size: 2em;
+       }
+
+
+
+    </style>
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="container">
+
+      <div id="logo" class="pull-left">
+        <h1><a href="/feast" class="scrollto"><b>FEAST</b></a></h1>
+      </div>
+
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li class="menu-active"><a href="/feast"><b>Home</b></a></li>
+          <li><a href="../feast/#about"><b>About Us</b></a></li>
+          <li><a href="../feast/#features"><b>Features</b></a></li>
+          <li><a href="../feast/#team"><b>Team</b></a></li>
+          <li><a href="../feast/#contact"><b>Contact Us</b></a></li>
+        </ul>
+      </nav><!-- #nav-menu-container -->
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs Section ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2><b>AI Scan Results</b></h2>
+          <ol>
+            <li><a href="/feast">Home</a></li>
+            <li>AI Scan Results</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs Section -->
+
+  </main><!-- End #main -->
+
+    <!-- ======= Intro Section ======= -->
+
+        <div class="card card-chart" id="intro-bg">
+          <div class="card-header ">
+            <div class="row">
+              <div class="col-sm-12 text-center">
+                <form method="post" action="{% url 'run_img_upload' %}">
+                  {% csrf_token %}
+                  <h2 class="card-title text-center"><span style="font-size: 20px; font-weight: bold; color: white; ">Upload Image</span> <span></span></h2>
+                  <div class="form-group">
+                    <div class="basic-search">
+                      <div class="input-field">
+                        <input type="file" id="file-input" name="file-input">
+                      </div>
+                    </div>
+                  </div>
+                  <button type="submit" name="ai" class="btn btn-primary" style="width: 300px; font-weight:bold;" onclick="uploadImage(); onStart();">Upload Binary</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+  <br>
+  <div class="row" style="padding-top:30px; padding-left:20px; height: 400px; padding-right:20px; margin: 0;">
+    <div class="col-md-6">
+      <div class="card card-chart" style="height: 230px;">
+        <div class="card-header" style="justify-content: center; display:flex; align-items:center;"><img src="../static/icons/config.png" style="height: 30px; margin-right: 0.5rem;"><span style="font-size:20px;"><b>Probability</b></span></div>
+        <!--h4 style="padding-top:60px; padding-left: 20px; justify-content: center; display:flex; align-items:center;">Probability: {{ pred_probability }}</h4-->
+        <div class="card-body" id="probability" style="height: 50px; display: flex; justify-content: center; display:flex; align-items:center;">
+          <h4 style="padding-left: 20px; margin: 0; font-weight:bold;">{{ pred_probability }}%</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card card-chart" style="height: 230px;">
+        <div class="card-header" style="justify-content: center; display:flex; align-items:center;"><img src="../static/icons/binary.png" style="height: 30px; margin-right: 0.5rem;"><span style="font-size:20px;"><b>Image Status</b></span></div>
+        <div class="card-body" id="image_status" style="height: 50px; display: flex; justify-content: center; display:flex; align-items:center;">
+          {% if pred_class == 'vulnerable' %}
+            <h4 style="padding-left: 20px; margin: 0;">Status: {{ pred_class }}</h4>
+            <img src="../static/icons/warning.png" alt="warning" style="margin-left: 10px; height:90px; width:90px;">
+          {% else %}
+            <h4 style="padding-left: 20px; margin: 0;">Status: {{ pred_class }}</h4>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--
+  <div class="row" style="justify-content: center; align-items:center; height:100px;">
+    <div>
+      <div id="sub-loader" style="display: none">
+        <span class="spinner-border spinner-border-sm text-info" style="height: 100px; width: 100px; font-size:100px; font-weight: bold;" role="status" aria-hidden="true">
+          Scanning Image...
+        </span>
+      </div>
+    </div>
+  </div>
+  -->
+    <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 text-lg-left text-center">
+          <div class="copyright">
+            Powered by <strong><a target="_blank" href="https://ncsael.mcs.nust.edu.pk">NCSAEL</a></strong>
+          </div>
+
+        </div>
+        <div class="col-lg-6">
+          <nav class="footer-links text-lg-right text-center pt-2 pt-lg-0">
+            <a href="/feast" class="scrollto">Home</a>
+
+          </nav>
+        </div>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'vendor/wow/wow.min.js' %}"></script>
+  <script src="{% static 'vendor/venobox/venobox.min.js' %}"></script>
+  <script src="{% static 'vendor/superfish/superfish.min.js' %}"></script>
+  <script src="{% static 'vendor/hoverIntent/hoverIntent.js' %}"></script>
+  <!-- Template Main JS File -->
+  <script src="{% static 'js/main.js' %}"></script>
+  <script>
+  function uploadImage() {
+    const input = document.getElementById('file-input');
+    const file = input.files[0];
+    const formData = new FormData();
+    formData.append('file', file);
+
+    fetch('/upload', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => {
+      if (response.ok) {
+        alert('Image uploaded successfully');
+      } else {
+        alert('Error uploading image');
+      }
+    })
+    .catch(error => {
+      console.error(error);
+    });
+  }
+  function onStart(){
+      var x = document.getElementById("sub-loader");
+      if (x.style.display === "none") {
+          x.style.display = "block";
+      } else {
+          x.style.display = "none";
+  }
+  }
+
+  </script>
+
+</body>
+
+</html>

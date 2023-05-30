@@ -1,0 +1,166 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>FEAST - Static Analysis</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+   <!-- Favicons -->
+  <link href="{% static 'img/favicon.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <link href="{% static 'css/fonts.css' %}" rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/venobox/venobox.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="container">
+
+      <div id="logo" class="pull-left">
+        <h1><a href="/feast" class="scrollto"><b>FEAST</b></a></h1>
+      </div>
+
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li class="menu-active"><a href="/feast"><b>Home</b></a></li>
+          <li><a href="#about"><b>About Us</b></a></li>
+          <li><a href="#features"><b>Features</b></a></li>
+          
+          <li><a href="#team"><b>Team</b></a></li>
+          
+          <li><a href="#contact"><b>Contact Us</b></a></li>
+        </ul>
+      </nav><!-- #nav-menu-container -->
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs Section ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2><b>Static Analysis</b></h2>
+          <ol>
+            <li><a href="/feast">Home</a></li>
+            <li>Static Analysis</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs Section -->
+
+
+  </main><!-- End #main -->
+  
+    <!-- ======= Intro Section ======= -->
+  <section id="intro">
+
+    <div class="intro-text">
+
+        <form action="{% url 'run_static' %}" method="post">
+            {% csrf_token %}
+             <button type="submit" class="btn-get-started scrollto" style="background-color:transparent; width: 300px " ><b>Static Analysis</b></button>
+        </form>
+
+        <form action="{% url 'nav_dynamic' %}" method="post">
+            {% csrf_token %}
+             <button type="submit" class="btn-get-started scrollto" style="background-color:transparent; width: 300px "><b>Next Step --></b></button>
+         </form>
+
+    </div>
+
+    <div class="product-screens">
+
+      <div class="product-screen-3 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.6s">
+        <img src="{% static 'img/' %}" alt="">
+      </div>
+	  
+	  <div class="product-screen-1 wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="0.6s">
+        <img src="{% static 'img/' %}" alt="">
+      </div>
+	  
+		<html lang = "en">
+		  <head>
+			<title>formDemo.html</title>
+			<meta charset = "UTF-8" />
+		  </head>
+		  <body>
+          <textarea id = "static-log" cols="120" rows="14" readonly></textarea>
+		  </body>
+		</html>
+
+    </div>
+
+  </section><!-- End Intro Section -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 text-lg-left text-center">
+          <div class="copyright">
+            <strong></strong>Powered by NCSAEL
+          </div>
+          
+        </div>
+        <div class="col-lg-6">
+          <nav class="footer-links text-lg-right text-center pt-2 pt-lg-0">
+            <a href="#intro" class="scrollto">Home</a>
+            
+          </nav>
+        </div>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'vendor/wow/wow.min.js' %}"></script>
+  <script src="{% static 'vendor/venobox/venobox.min.js' %}"></script>
+  <script src="{% static 'vendor/superfish/superfish.min.js' %}"></script>
+  <script src="{% static 'vendor/hoverIntent/hoverIntent.js' %}"></script>
+  <!-- Template Main JS File -->
+  <script src="{% static 'js/main.js' %}"></script>
+
+ <script>
+        console.log(window.location)
+        const chatSocket = new WebSocket('ws://127.0.0.1:8000/ws/');
+        chatSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            console.log(data)
+            document.querySelector('#static-log').value += (data.message + '\n');
+        };
+
+        chatSocket.onclose = function(e) {
+            console.error('Chat socket closed unexpectedly');
+        };
+
+ </script>
+
+</body>
+
+</html>

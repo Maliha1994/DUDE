@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>FEAST - Report Generation</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+   <!-- Favicons -->
+  <link href="{% static 'img/favicon.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+ <link href="{% static 'css/fonts.css' %}" rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/venobox/venobox.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+</head>
+
+
+<style>
+    #intro{
+        height:528px !important;
+    }
+    #details {
+        background-color: transparent;
+        color: black;
+        font-weight: bold;
+    }
+</style>
+
+
+
+<body>
+
+  <!-- ======= Header ======= -->
+   <div class="row">
+      <div class="col-12">
+        <div class="card card-chart">
+          <div class="card-header ">
+            <div class="row">
+              <div class="col-sm-6 text-left">
+                <form method="post">
+                  {% csrf_token %}
+                  <h2 class="card-title"><span style="font-size: 20px; font-weight: bold;">Enter CWE ID Number</span> <span></span></h2>
+                  <div class="form-group">
+                                <div class="basic-search">
+                                    <div class="input-field">
+
+                                        <input type="text" name="cwe_id" id="cwe_id" aria-describedby="emailHelp" placeholder="CWE ID Number">
+                                        <!-- small id="emailHelp" class="form-text text-muted">Enter the URL to extract Subdomains</small -->
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-outline-dark" id="startbutton" onclick="onStart()">Display Details</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+                <div class="row">
+                    <div class="col-md-6 text-center">
+                        <div class="card card-chart" style="height: 150px; ">
+                            <div class="card-header"><span class="text-white" style="font-size: 20px; color:black; font-weight: bold;">Total CVEs found</span></div>
+                            <h4 class="text-white" style="color:white; padding-top: 25px; font-size: 18px; font-weight: bold">{{cve_number}}</h4>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 text-center">
+                        <div class="card card-chart" style="height: 150px;">
+                            <div class="card-header"><span class="text-white" style="font-size: 20px; color:black; font-weight: bold;">CWE Detailed Review</span></div>
+                            <h4 class="text-white" style="color:white; padding-top: 25px; font-size: 18px;"><a style="color: white; font-weight: bold" href="{{cwe_url}}">{{cwe_url}}</a></h4>
+                        </div>
+                    </div>
+                </div>
+
+                  <div class="row">
+                        <div class="col-md-12 text-center">
+                            <div class="card" style="height: 500px; overflow: scroll;">
+                                <div class="card-header"><span class="text-white" style="font-size: 20px; color:black; font-weight: bold;">CVE Details</span></div>
+                              <div class="card-body">
+                                <div class="card-text overflow-auto">
+                                  <div class="row">
+                                    <div class="col-12">
+
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                              <th scope="col" class="text-white" style="font-size: 20px;">CVE</th>
+                                              <th scope="col" class="text-white" style="font-size: 20px;">Description</th>
+                                            </tr>
+                                        </thead>
+                                      <tbody>
+                                      {% for i in cve_detail %}
+                                        <tr>
+                                      {% for c in i %}
+                                            <td>{{c}}</td>
+
+                                      {% endfor %}
+                                        </tr>
+                                      {% endfor %}
+                                      </tbody>
+                                    </table>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        </div>
+</div>
+
+
+
+</body>
+
+</html>
